@@ -1,26 +1,29 @@
 var exec = require("child_process").execFile,
   fs = require("fs");
 
-const run = () => {
+const main = () => {
   console.log("Running Speedtest CLI command...");
-  exec("speedtest.exe", ["-f", "json"], function (err, data) {
+  exec("speedtest.exe", ["-f", "json-pretty"], function (err, data) {
     if (err) console.log(err);
-    else readFile(JSON.parse(data));
+    else readAndMerge(JSON.parse(data));
   });
 };
 
-const readFile = async (newTest) => {
-  fs.readFile("tests.json", "utf8", (err, allTests) => {
-    if (err) console.log(err);
+const readAndMerge = (newTest) => {
+  try {
+    var json = require("./tests.json");
+  } catch (err) {
+    if (err.code === "MODULE_NOT_FOUND") var json = { array: [] };
     else {
-      combineJSON(JSON.parse(allTests), newTest);
+      console.log(
+        "This error hasn't been checked for. If you're seeing this in the console please contant me on GitHub! https://github.com/howe-oh. Error details:"
+      );
+      console.log(err);
+      return;
     }
-  });
-};
-
-const combineJSON = (allTests, newTest) => {
-  allTests.array.push(newTest);
-  writeFile(allTests);
+  }
+  json.array.push(newTest);
+  writeFile(json);
 };
 
 const writeFile = (data) => {
@@ -30,4 +33,4 @@ const writeFile = (data) => {
   });
 };
 
-run();
+main();

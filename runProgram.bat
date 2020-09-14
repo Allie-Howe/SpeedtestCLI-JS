@@ -1,2 +1,2 @@
-cd C:\Users\alexg\Downloads\ookla-speedtest-1.0.0-win64\
+cd /d %~dp0
 node runTests.js
