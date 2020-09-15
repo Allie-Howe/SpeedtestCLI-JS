@@ -16,7 +16,7 @@ const readAndMerge = (newTest) => {
     if (err.code === "MODULE_NOT_FOUND") var json = { array: [] };
     else {
       console.log(
-        "This error hasn't been checked for. If you're seeing this in the console please contant me on GitHub! https://github.com/howe-oh. Error details:"
+        "This error hasn't been checked for. If you're seeing this in the console please contact me on GitHub! https://github.com/howe-oh. Error details:"
       );
       console.log(err);
       return;
