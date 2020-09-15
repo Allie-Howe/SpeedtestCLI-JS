@@ -2,7 +2,7 @@
 
 ## What is this?
 
-This repo includes JS code to run intermittent speedtests using the command line application developed by Ookla, save the results into a JSON file, and upload them to a Plotly graph.
+This repo includes JS code to run intermittent speedtests using the command line application developed by Ookla, save the results into a JSON file, and upload them to a Plotly graph whenever you'd like.
 
 ## How do I run it?
 
